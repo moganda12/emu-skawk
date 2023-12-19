@@ -1,6 +1,3 @@
 # node
 # build artifacts
 dist
-
-\.replit
-replit\.nix
