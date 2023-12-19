@@ -1,0 +1,7 @@
+# node
+# build artifacts
+dist
+
+/.git
+.replit
+replit.nix
