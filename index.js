@@ -1,7 +1,8 @@
-import createMemory from './memary.js';
+import createMemory from './memory.js';
+import CPU from './cpu.js';
 
-let screenel = document.getElementById("screen");
+let cpu = new CPU;
 
-let screen = screenel.getContext("2d");
+cpu.ip.setUint32(0, 10020)
 
-let vram = Array(screenel.width/2).fill(Array(screenel.height/2).fill("#000000"));
+console.log(cpu.getRegister('ip'))

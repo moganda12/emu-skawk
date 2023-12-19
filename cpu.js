@@ -1,20 +1,35 @@
+import createMemory from './memory.js';
 
 class CPU {
-    constructor(memorymeth, memlen) {
-        this.memory = memorymeth(memlen);
+    constructor(memlen) {
+        this.memory = createMemory(memlen);
 
-        this.reg16names = [
+        this.registerNames = [
             'acc',
             'r1','r2','r3','r4',
             'r5','r6','r7','r8',
             'r9','r10','r11','r12',
             'r13','r14','r15','r16'
-        ]
-        this.reg8names = [
-            'acc',
-            '8r1','8r2','8r3','8r4',
-            '8r5','8r6','8r7','8r9'
-        ]
+        ];
+
+        this.ip = createMemory(4);
+        this.registers = createMemory(this.registerNames.length * 2);
+
+        this.registerMap = this.registerNames.reduce((map, rname, i) => {
+            map[rname] = i * 2;
+            return map;
+        }, {});
+    }
+
+    getRegister(rname) {
+        if (!(rname in this.registerMap || rname === 'ip')) {
+            throw new Error(`getRegister: No such register '${rname}'`)
+        }
+        if (rname in this.registerMap) {
+            return this.registers.getUint16(this.registerMap[rname])
+        } else {
+            return this.ip.getUint32(0)
+        }
     }
 }
 
