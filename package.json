@@ -1,8 +1,8 @@
 {
   "$schema": "./suppressTheWarning.json",
-  "name": "THEMU version 0.0.0.0.4",
+  "name": "THEMU version 0.0.0.0.7",
   "private": true,
-  "version": "0.0.0.0.4",
+  "version": "0.0.0.0.7",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

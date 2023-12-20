@@ -1,13 +1,9 @@
 import createMemory from './memory.js';
 import CPU from './cpu.js';
 
-let cpu = new CPU;
+let cpu = new CPU(1024*1024);
 
 //tests
-cpu.setRegister('ip', 100020);
-cpu.setRegister('acc', 1024);
+cpu.memory.setUint8(24)
 
-console.log(cpu.getRegister('ip'));
-console.log(cpu.getRegister('acc'));
-
-cpu.getRegister('uhmmmmmmmmmmmmmmm')
+console.log(cpu.fetch())

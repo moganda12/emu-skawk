@@ -42,6 +42,13 @@ class CPU {
             this.ip.setUint32(0, value);
         };
     };
+
+    fetch() {
+        const nextInstructionAddress = this.getRegister(ip);
+        const instruction = this.memory.getUint8(nextInstructionAddress);
+        this.setRegister('ip', instruction);
+        return instruction;
+    }
 };
 
 export default CPU;
