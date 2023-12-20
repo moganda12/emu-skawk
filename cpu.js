@@ -19,18 +19,29 @@ class CPU {
             map[rname] = i * 2;
             return map;
         }, {});
-    }
+    };
 
     getRegister(rname) {
         if (!(rname in this.registerMap || rname === 'ip')) {
-            throw new Error(`getRegister: No such register '${rname}'`)
-        }
+            throw new Error(`getRegister: No such register '${rname}'`);
+        };
         if (rname in this.registerMap) {
-            return this.registers.getUint16(this.registerMap[rname])
+            return this.registers.getUint16(this.registerMap[rname]);
         } else {
-            return this.ip.getUint32(0)
-        }
-    }
-}
+            return this.ip.getUint32(0);
+        };
+    };
+
+    setRegister(rname, value) {
+        if (!(rname in this.registerMap || rname === 'ip')) {
+            throw new Error(`setRegister: No such register '${rname}'`);
+        };
+        if (rname in this.registerMap) {
+            return this.registers.gsetUint16(this.registerMap[rname], value);
+        } else {
+            this.ip.setUint32(0, value);
+        };
+    };
+};
 
 export default CPU;
