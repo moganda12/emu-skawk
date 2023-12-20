@@ -37,7 +37,7 @@ class CPU {
             throw new Error(`setRegister: No such register '${rname}'`);
         };
         if (rname in this.registerMap) {
-            return this.registers.gsetUint16(this.registerMap[rname], value);
+            return this.registers.setUint16(this.registerMap[rname], value);
         } else {
             this.ip.setUint32(0, value);
         };
